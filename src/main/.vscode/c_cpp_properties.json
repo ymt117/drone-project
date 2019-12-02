@@ -3,7 +3,10 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:\\Users\\ymt\\Documents\\Arduino\\hardware\\espressif\\esp32\\**"
+                "C:\\Users\\ymt\\Documents\\Arduino\\hardware\\espressif\\esp32\\**",
+                "C:/Users/ymt/Documents/MyDocument/arduino-1.8.9/libraries/**",
+                "C:/Users/ymt/Documents/MyDocument/arduino-1.8.9/hardware/arduino/avr/**",
+                "C:/Users/ymt/Documents/MyDocument/arduino-1.8.9/hardware/tools/**"
             ],
             "forcedInclude": [],
             "intelliSenseMode": "msvc-x64",
