@@ -7,27 +7,20 @@
 #include "prototype.h"
 
 void setup(){
-    motor_init();
+    Serial.begin(115200);
+    Serial.println("Start!!!");
 
-    delay(30000);
+    // Initialization
+    motor_init();
+    imu_init();
+
+    delay(1000);
 }
 
 void loop(){
+    read_Accel();
+    read_Gyro();
+    read_Mag();
 
-    for(int i=0; i<256; i++){
-        motor_a_cw(i);
-        motor_b_ccw(i);
-        motor_c_cw(i);
-        motor_d_ccw(i);
-        delay(1);
-    }
-
-    delay(3000);
-
-    motor_a_stop();
-    motor_b_stop();
-    motor_c_stop();
-    motor_d_stop();
-
-    delay(5000);
+    delay(100);
 }
