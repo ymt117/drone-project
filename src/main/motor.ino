@@ -87,3 +87,24 @@ void motor_d_stop(){
     digitalWrite(din1, LOW);
     digitalWrite(din2, LOW);
 }
+
+void motor_test(){
+    delay(2500);
+
+    for(int i=0; i<256; i++){
+        motor_a_cw(i);
+        motor_b_ccw(i);
+        motor_c_cw(i);
+        motor_d_ccw(i);
+        delay(1);
+    }
+
+    delay(5000);
+
+    motor_a_stop();
+    motor_b_stop();
+    motor_c_stop();
+    motor_d_stop();
+
+    delay(2500);
+}

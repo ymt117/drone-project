@@ -19,6 +19,8 @@ void motor_c_stop();
 void motor_d_ccw(int pwm);
 void motor_d_stop();
 
+void motor_test();
+
 /**************************************************
  * imu.ino
  **************************************************/
