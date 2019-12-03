@@ -10,6 +10,7 @@
 #define SCL_PIN 22
 #endif
 
+//#define CALIB_ON
 #define CALIB_SEC 20
 
 MPU9250_asukiaaa mySensor;
@@ -36,11 +37,13 @@ void imu_init(){
         Serial.println("Cannot read sensorId");
     }
 
+#ifdef CALIB_ON
     // Clibrate mag sensor
     Serial.println("Start scanning values of magnetometer to get offset values.");
     Serial.println("Rotate your device for " + String(CALIB_SEC) + " seconds.");
     setMagMinMaxAndSetOffset(&mySensor, CALIB_SEC);
     Serial.println("Finished setting offset values.");
+#endif
 }
 
 /**************************************************
