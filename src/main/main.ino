@@ -5,10 +5,15 @@
 
 #include "pin_layout.h"
 #include "prototype.h"
+#include "BluetoothSerial.h"
+
+BluetoothSerial SerialBT;
 
 void setup(){
     Serial.begin(115200);
     Serial.println("Start!!!");
+    SerialBT.begin("ymt drone");
+    SerialBT.println("Hello Bluetooth!!!");
 
     // Initialization
     motor_init();
@@ -18,7 +23,6 @@ void setup(){
 }
 
 void loop(){
-    read_Mag();
 
     delay(100);
 }
