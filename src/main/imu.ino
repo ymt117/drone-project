@@ -1,3 +1,7 @@
+/**************************************************
+ * Reference:
+ *  - https://github.com/asukiaaa/MPU9250_asukiaaa
+ **************************************************/
 #include <MPU9250_asukiaaa.h>
 #include "gloval_value.h"
 
@@ -5,6 +9,8 @@
 #define SDA_PIN 21
 #define SCL_PIN 22
 #endif
+
+#define CALIB_SEC 20
 
 MPU9250_asukiaaa mySensor;
 
@@ -29,6 +35,43 @@ void imu_init(){
     else{
         Serial.println("Cannot read sensorId");
     }
+
+    // Clibrate mag sensor
+    Serial.println("Start scanning values of magnetometer to get offset values.");
+    Serial.println("Rotate your device for " + String(CALIB_SEC) + " seconds.");
+    setMagMinMaxAndSetOffset(&mySensor, CALIB_SEC);
+    Serial.println("Finished setting offset values.");
+}
+
+/**************************************************
+ * Mag offset
+ **************************************************/
+void setMagMinMaxAndSetOffset(MPU9250_asukiaaa* sensor, int seconds){
+    unsigned long calibStartAt = millis();
+    float magX, magXMin, magXMax, magY, magYMin, magYMax, magZ, magZMin, magZMax;
+
+    sensor->magUpdate();
+    magXMin = magXMax = sensor->magX();
+    magYMin = magYMax = sensor->magY();
+    magZMin = magZMax = sensor->magZ();
+
+    while(millis() - calibStartAt < (unsigned long) seconds * 1000) {
+        delay(100);
+        sensor->magUpdate();
+        magX = sensor->magX();
+        magY = sensor->magY();
+        magZ = sensor->magZ();
+        if (magX > magXMax) magXMax = magX;
+        if (magY > magYMax) magYMax = magY;
+        if (magZ > magZMax) magZMax = magZ;
+        if (magX < magXMin) magXMin = magX;
+        if (magY < magYMin) magYMin = magY;
+        if (magZ < magZMin) magZMin = magZ;
+    }
+
+    sensor->magXOffset = - (magXMax + magXMin) / 2;
+    sensor->magYOffset = - (magYMax + magYMin) / 2;
+    sensor->magZOffset = - (magZMax + magZMin) / 2;
 }
 
 /**************************************************

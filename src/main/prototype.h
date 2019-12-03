@@ -1,5 +1,6 @@
 #ifndef __PROTOTYPE_H__
 #define __PROTOTYPE_H__
+#include <MPU9250_asukiaaa.h>
 
 /**************************************************
  * motor.ino
@@ -22,6 +23,7 @@ void motor_d_stop();
  * imu.ino
  **************************************************/
 void imu_init();
+void setMagMinMaxAndSetOffset(MPU9250_asukiaaa*, int);
 
 void read_Accel();
 void read_Gyro();

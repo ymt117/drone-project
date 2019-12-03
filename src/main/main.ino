@@ -18,8 +18,6 @@ void setup(){
 }
 
 void loop(){
-    read_Accel();
-    read_Gyro();
     read_Mag();
 
     delay(100);
