@@ -13,10 +13,14 @@ void setup(){
     // Initialization
     motor_init();
     imu_init();
+    kalman_filter_init();
 
     delay(1000);
 }
 
 void loop(){
-    delay(100);
+    kalman_filter_update();
+    Serial.print("roll: "  + String(roll)  + "\t");
+    Serial.print("pitch: " + String(pitch) + "\t");
+    Serial.println();
 }

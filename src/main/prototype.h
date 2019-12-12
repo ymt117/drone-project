@@ -31,4 +31,10 @@ void read_Accel();
 void read_Gyro();
 void read_Mag();
 
+/**************************************************
+ * imu.ino
+ **************************************************/
+void kalman_filter_init();
+void kalman_filter_update();
+
 #endif // __PROTOTYPE_H__

@@ -3,6 +3,7 @@
 
 #include <MPU9250_asukiaaa.h>
 #include "BluetoothSerial.h"
+#include <Kalman.h>
 
 #include "pin_layout.h"
 #include "prototype.h"
