@@ -12,6 +12,8 @@
 //#define CALIB_ON
 #define CALIB_SEC 20
 
+//#define SERIAL_PRINT_IMU
+
 MPU9250_asukiaaa mySensor;
 
 /**************************************************
@@ -85,10 +87,12 @@ void read_Accel(){
         aY = mySensor.accelY();
         aZ = mySensor.accelZ();
         aSqrt = mySensor.accelSqrt();
+    #ifdef SERIAL_PRINT_IMU
         Serial.print("accelX: " + String(aX) + "\t");
         Serial.print("accelY: " + String(aY) + "\t");
         Serial.print("accelZ: " + String(aZ) + "\t");
         Serial.println("accelSqrt: " + String(aSqrt));
+    #endif
     }
     else{
         Serial.println("Cannot read accel values");
@@ -100,9 +104,11 @@ void read_Gyro(){
         gX = mySensor.gyroX();
         gY = mySensor.gyroY();
         gZ = mySensor.gyroZ();
+    #ifdef SERIAL_PRINT_IMU
         Serial.print("gyroX: " + String(gX) + "\t");
         Serial.print("gyroY: " + String(gY) + "\t");
         Serial.println("gyroZ: " + String(gZ));
+    #endif
     }
     else{
         Serial.println("Cannot read gyro values");
@@ -115,10 +121,12 @@ void read_Mag(){
         mY = mySensor.magY();
         mZ = mySensor.magZ();
         mDirection = mySensor.magHorizDirection();
+    #ifdef SERIAL_PRINT_IMU
         Serial.print("magX: " + String(mX) + "\t");
         Serial.print("magY: " + String(mY) + "\t");
         Serial.print("magZ: " + String(mZ) + "\t");
         Serial.println("horizontal direction: " + String(mDirection));
+    #endif
     }
     else{
         Serial.println("Cannot read mag values");
