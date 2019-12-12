@@ -1,4 +1,4 @@
-#include "pin_layout.h"
+#include "all.h"
 /*
  * 白：プラス，黒：マイナス　->　反時計回りで飛ぶ
  * 

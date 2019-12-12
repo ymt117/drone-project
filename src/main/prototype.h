@@ -1,6 +1,6 @@
 #ifndef __PROTOTYPE_H__
 #define __PROTOTYPE_H__
-#include <MPU9250_asukiaaa.h>
+#include "all.h"
 
 /**************************************************
  * motor.ino

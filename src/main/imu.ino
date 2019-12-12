@@ -2,8 +2,7 @@
  * Reference:
  *  - https://github.com/asukiaaa/MPU9250_asukiaaa
  **************************************************/
-#include <MPU9250_asukiaaa.h>
-#include "gloval_value.h"
+#include "all.h"
 
 #ifdef _ESP32_HAL_I2C_H_
 #define SDA_PIN 21

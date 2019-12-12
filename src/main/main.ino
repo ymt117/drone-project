@@ -2,12 +2,7 @@
  * Drone Project
  * Author: ymt
  *******************************************************/
-
-#include "pin_layout.h"
-#include "prototype.h"
-#include "BluetoothSerial.h"
-
-BluetoothSerial SerialBT;
+#include "all.h"
 
 void setup(){
     Serial.begin(115200);
@@ -23,6 +18,5 @@ void setup(){
 }
 
 void loop(){
-
     delay(100);
 }
