@@ -15,6 +15,9 @@ double kalAngleX, kalAngleY;    // Calculated angle using a kalman filter
 
 uint32_t timer;
 
+/**************************************************
+ * Kalman filter init
+ **************************************************/
 void kalman_filter_init(){
     delay(100); // Wait for sensor to stabilize
     read_Accel();
@@ -33,6 +36,10 @@ void kalman_filter_init(){
     timer = micros();
 }
 
+
+/**************************************************
+ * Kalman filter update
+ **************************************************/
 void kalman_filter_update(){
     // Update all the values
     read_Accel();
