@@ -4,6 +4,8 @@
  **************************************************/
 #include "all.h"
 
+//#define SERIAL_PRINT_KALMAN
+
 Kalman kalmanX;
 Kalman kalmanY;
 
@@ -72,6 +74,12 @@ void kalman_filter_update(){
         gyroXangle = kalAngleX;
     if(gyroYangle < -180 || gyroYangle > 180)
         gyroYangle = kalAngleY;
+
+#ifdef SERIAL_PRINT_KALMAN
+    Serial.print("roll: "  + String(roll)  + "\t");
+    Serial.print("pitch: " + String(pitch) + "\t");
+    Serial.println();
+#endif
 
     delay(2);
 }
